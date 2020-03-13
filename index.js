@@ -5,8 +5,7 @@ module.exports = function* parseMimeMultipart(uint8Array) {
   /** @typedef {{ type: 'header-name'; boundary: string; name: string; headers: Header[]; }} HeaderName */
   /** @typedef {{ type: 'header-value'; boundary: string; name: string; value: string; values: string[]; headers: Header[]; }} HeaderValue */
   /** @typedef {{ type: 'content'; boundary: string; headers: Headers[]; index: number; length: number; }} Content */
-  /** @typedef {{ type: 'conclusion'; headers: Headers[]; content: string; }} Content */
-  /** @type {Boundary | HeaderName | HeaderValue | Content | Conclusion} */
+  /** @type {Boundary | HeaderName | HeaderValue | Content} */
   let state = { type: 'boundary', boundary: '' };
   let line = 0;
   let column = 0;
@@ -138,5 +137,9 @@ module.exports = function* parseMimeMultipart(uint8Array) {
         throw new Error(`At ${index} (${line}:${column}): invalid state ${JSON.stringify(state)}.`);
       }
     }
+  }
+
+  if (state.type !== 'content') {
+    throw new Error(`At ${index} (${line}:${column}): expected content state, got ${JSON.stringify(state)}.`);
   }
 };
