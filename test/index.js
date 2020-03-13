@@ -6,6 +6,7 @@ const tests = [
   require('./one-file-win'),
   require('./two-files'),
   require('./two-files-win'),
+  require('./zorro'),
 ];
 
 const textEncoder = new TextEncoder();
@@ -21,9 +22,9 @@ for (const test of tests) {
     const part = parts[index];
     if (JSON.stringify(part) !== JSON.stringify(test.output[index])) {
       console.log('part #', index, 'does not match');
-      console.log(JSON.stringify(test.input.slice(part.index, part.index + part.length)));
-      console.log(part);
-      console.log(test.output[index]);
+      //console.log(JSON.stringify(test.input.slice(part.index, part.index + part.length)));
+      console.log(JSON.stringify(part, null, 2));
+      console.log(JSON.stringify(test.output[index], null, 2));
     }
   }
 }
