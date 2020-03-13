@@ -1,4 +1,4 @@
-module.exports = function* parseMimeMultipart(uint8Array) {
+module.exports = function* parseMimeMultipart(/** @type {Uint8Array} */ uint8Array) {
   const textDecoder = new TextDecoder();
   /** @typedef {{ name: string; values: string[]; }} Header */
   /** @typedef {{ type: 'boundary'; boundary: string; }} Boundary */
@@ -7,9 +7,10 @@ module.exports = function* parseMimeMultipart(uint8Array) {
   /** @typedef {{ type: 'content'; boundary: string; headers: Headers[]; index: number; length: number; }} Content */
   /** @type {Boundary | HeaderName | HeaderValue | Content} */
   let state = { type: 'boundary', boundary: '' };
+  let index = 0;
   let line = 0;
   let column = 0;
-  for (let index = 0; index < uint8Array.length; index++) {
+  for (; index < uint8Array.byteLength; index++) {
     const character = textDecoder.decode(uint8Array.slice(index, index + 1));
     if (character === '\n') {
       line++;
