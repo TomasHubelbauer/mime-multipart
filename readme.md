@@ -9,8 +9,9 @@ access to the name and type of the content.
 
 ## Testing
 
-`node test`
+`node test` to run the hardcoded plain text cases.
+
+`node demo` to run a server which accepts uploads from `npx serve .` accessed at
+http://localhost:5000 which allows uploading arbitrary files.
 
 ## To-Do
-
-### Build the code and the tests

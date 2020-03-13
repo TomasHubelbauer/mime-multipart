@@ -1,0 +1,25 @@
+module.exports = {
+  label: 'No files',
+  input: `-----------------------------7425884061719830581540789485
+Content-Disposition: form-data; name="files[]"; filename=""
+Content-Type: application/octet-stream
+
+
+-----------------------------7425884061719830581540789485--`,
+  output: [
+    {
+      headers: [
+        {
+          name: 'Content-Type',
+          values: ['application/octet-stream'],
+        },
+        {
+          name: 'Content-Disposition',
+          values: ['form-data', 'name=\"files[]\"', 'filename=\"\"'],
+        },
+      ],
+      index: 158,
+      length: 0,
+    }
+  ]
+};

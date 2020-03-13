@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "serve": "^11.3.0"
+  }
+}
