@@ -13,5 +13,3 @@ access to the name and type of the content.
 
 `node demo` to run a server which accepts uploads from `npx serve .` accessed at
 http://localhost:5000 which allows uploading arbitrary files.
-
-## To-Do
