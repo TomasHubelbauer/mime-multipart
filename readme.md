@@ -1,5 +1,8 @@
 # JavaScript MIME Multipart Parser
 
+> Disclaimer: This is no longer necessary for Cloudflare Workers!
+> https://developers.cloudflare.com/workers/platform/compatibility-dates/#formdata-parsing-supports-file
+
 This code exists because CloudFlare Workers do not construct a proper `FormData`
 instance when using `request.formData()`. When having uploaded files, the
 `FormData` instance returns their contents as a string in `get` and `getAll`,
